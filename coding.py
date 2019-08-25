@@ -4,7 +4,7 @@ import heapq
 
 class Node:
     """
-    This is the Node class which will contain the character properties in the huffman tree
+    This is the Node class which will contain the character properties in the huffman tree.
     """
     def __init__(self, char, freq):
         """
