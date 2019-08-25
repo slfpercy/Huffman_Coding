@@ -3,13 +3,28 @@ import heapq
 
 
 class Node:
+    """
+    This is the Node class which will contain the character properties in the huffman tree
+    """
     def __init__(self, char, freq):
+        """
+        Every node will contain a character, the frequency of the character, at if necessary child nodes for other
+        characters
+        :param char: character
+        :param freq: frequency of the char
+        """
         self.char = char
         self.freq = freq
         self.left_child = None
         self.right_child = None
 
     def __lt__(self, other):
+        """
+        It will be necessary to compare the nodes with others. This function allows to compare the node class with other
+        node classes (It's frequencies)
+        :param other:
+        :return:
+        """
         if other is None:
             return -1
         if not isinstance(other, Node):
