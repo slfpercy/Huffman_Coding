@@ -8,7 +8,7 @@ class Node:
     """
     def __init__(self, char, freq):
         """
-        Every node will contain a character, the frequency of the character, at if necessary child nodes for other
+        Every node will contain a character, the frequency of the character and if necessary child nodes for other
         characters
         :param char: character
         :param freq: frequency of the char
