@@ -33,6 +33,12 @@ class Node:
 
 
 def codes_dictionary(node, cod):
+    """
+    Create a dictionary with the binary codes for every character in the huffman tree using recursion
+    :param node:
+    :param cod:
+    :return:
+    """
     codes = {}
     if node is None:
         return
