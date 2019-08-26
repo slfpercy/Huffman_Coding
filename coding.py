@@ -56,7 +56,7 @@ def huffman_encoding(data):
     codes = {}
     freq_char = {}
     freq_table = []
-    treenode = None
+    tree_node = None
     encoded = ''
 
     for char in data:
@@ -68,8 +68,8 @@ def huffman_encoding(data):
     if len(freq_char) == 1:
         for keys in freq_char:
             key = keys
-        treenode = Node(None, 1)
-        treenode.left_child = Node(key, 1)
+        tree_node = Node(None, 1)
+        tree_node.left_child = Node(key, 1)
         codes.update({key: "0"})
     else:
         for char in freq_char:
@@ -80,18 +80,18 @@ def huffman_encoding(data):
             node1 = heapq.heappop(freq_table)
             node2 = heapq.heappop(freq_table)
 
-            treenode = Node(None, node1.freq + node2.freq)
-            treenode.left_child = node1
-            treenode.right_child = node2
+            tree_node = Node(None, node1.freq + node2.freq)
+            tree_node.left_child = node1
+            tree_node.right_child = node2
 
-            heapq.heappush(freq_table, treenode)
+            heapq.heappush(freq_table, tree_node)
 
-            codes = codes_dictionary(treenode, '')
+            codes = codes_dictionary(tree_node, '')
 
     for char in data:
         encoded += codes[char]
 
-    return encoded, treenode
+    return encoded, tree_node
 
 
 def huffman_decoding(data, tree):
