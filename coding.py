@@ -1,4 +1,3 @@
-import sys
 import heapq
 
 
@@ -52,19 +51,26 @@ def codes_dictionary(node, cod):
     return codes
 
 
-def huffman_encoding(data):
+def huffman_encoding(data: str):
+    """
+    Main method to encode the data
+    :param data: string to encode
+    :return:
+    """
     codes = {}
     freq_char = {}
     freq_table = []
     tree_node = None
     encoded = ''
 
+    # Find the frequency of every character in the string
     for char in data:
         if char in freq_char:
             freq_char[char] += 1
         else:
             freq_char[char] = 1
 
+    # tree for a single character
     if len(freq_char) == 1:
         for keys in freq_char:
             key = keys
@@ -72,10 +78,12 @@ def huffman_encoding(data):
         tree_node.left_child = Node(key, 1)
         codes.update({key: "0"})
     else:
+        # Create a heapq to sort the character by its frequency
         for char in freq_char:
             node = Node(char, freq_char[char])
             heapq.heappush(freq_table, node)
 
+        # assign every character to the tree and create the binary codes for that tree
         while len(freq_table) > 1:
             node1 = heapq.heappop(freq_table)
             node2 = heapq.heappop(freq_table)
@@ -88,6 +96,7 @@ def huffman_encoding(data):
 
             codes = codes_dictionary(tree_node, '')
 
+    # Encode the initial data
     for char in data:
         encoded += codes[char]
 
@@ -95,6 +104,12 @@ def huffman_encoding(data):
 
 
 def huffman_decoding(data, tree):
+    """
+    Function to decode the data using the data and the tree created using the huffman_encoding function
+    :param data:
+    :param tree:
+    :return:
+    """
     decoded = ''
     current_node = tree
     for num in data:
