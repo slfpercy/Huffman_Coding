@@ -1,6 +1,6 @@
 # Huffman coding
 
-This is a implementation of Huffman coding for the course Data Structures and Algorithms in udacity.
+This is an implementation of Huffman coding for the course Data Structures and Algorithms in udacity.
 
 Feel free to use for academic purposes.
 
